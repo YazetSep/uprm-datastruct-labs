@@ -1,5 +1,7 @@
 package lists;
 
+import linkedlists.List;
+
 public class ArrayListFactory<E> implements ListFactory<E> {
 
 	private static final int DEFAULT_SIZE = 10;

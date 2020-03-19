@@ -1,7 +1,7 @@
 package lists.test;
 
+import linkedlists.List;
 import lists.ArrayListFactory;
-import lists.List;
 import lists.ListFactory;
 
 public class ListTest {

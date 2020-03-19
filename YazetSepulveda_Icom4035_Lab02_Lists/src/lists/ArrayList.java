@@ -3,17 +3,19 @@ package lists;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import linkedlists.List;
+
 public class ArrayList<E> implements List<E> {
 
 	// private fields
 	private E elements[];
-	
+
 	private int currentSize;
-	
-	
+
+
 	private class ListIterator implements Iterator<E> {
 		private int currentPosition;
-		
+
 		public ListIterator() {
 			this.currentPosition = 0;
 		}
@@ -33,7 +35,7 @@ public class ArrayList<E> implements List<E> {
 		}
 	}
 
-	
+
 	@SuppressWarnings("unchecked")
 	public ArrayList(int initialCapacity) {
 		if (initialCapacity < 1)
@@ -52,7 +54,7 @@ public class ArrayList<E> implements List<E> {
 			this.elements[this.currentSize++] = obj;
 		}		
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private void reAllocate() {
 		// create a new array with twice the size
@@ -197,5 +199,64 @@ public class ArrayList<E> implements List<E> {
 	@Override
 	public Iterator<E> iterator() {
 		return new ListIterator();
+	}
+
+	public static int  totalCount(String s, List<String>[] strListArr) {
+		//Look at adding this in Link Lists too
+
+		//Stores amount of strings that are found in the lists 
+		int strCount = 0;
+
+		//Verify if the asrray of lists is empty or not (add one to check for each individual 
+		//list in the list array)
+		if(strListArr.length <= 0)
+			return strCount;
+
+		for (List<String> list : strListArr) {
+			for (String str : list) {
+
+				if(str.equals(s))
+					strCount++;
+
+			}
+		}
+
+		return strCount;
+	}
+
+	@Override
+	public int replaceAll(E e, E f) {
+		
+		int pos = 0;
+		int count = 0;
+		
+		for (E element : this) {
+			
+			//For every element in the target array list, check if it equals the parameter e
+			if(element.equals(e)) {
+				//Check this out
+				elements[pos] = f;
+				count++;
+			}
+			
+			pos++;
+		}
+		
+		return count;
+	}
+
+	@Override
+	public List<E> reverse() {
+		
+		List<E> reversedList = new ArrayList<E>(this.currentSize);
+		
+		if(this.isEmpty())
+			return reversedList;
+		
+		for (int i = currentSize-1; i>=0; i--) {
+			reversedList.add(this.elements[i]);
+		}
+		
+		return reversedList;
 	}
 }
