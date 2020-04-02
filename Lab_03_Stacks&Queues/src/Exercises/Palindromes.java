@@ -41,9 +41,9 @@ public class Palindromes {
 		return "Palindrome";
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(isPalindrome());
-	}
+//	public static void main(String[] args) {
+//		System.out.println(isPalindrome());
+//	}
 	
 	
 }
